@@ -1,0 +1,19 @@
+{
+  "paths": {
+    "root": "./",
+    "sprites": "sprites"
+  },
+  "data": {
+    "india": { 
+      "mbtiles": "india.mbtiles"
+    }
+  },
+  "styles": {
+    "custom-india": {
+      "style": "my_india_style.json",
+      "tilejson": {
+        "attribution": "© OpenMapTiles © OpenStreetMap contributors"
+      }
+    }
+  }
+}

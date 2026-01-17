@@ -1,0 +1,24 @@
+:80 {
+    tls internal 
+    
+    root * /web_data
+
+    handle /sprites/* {
+        file_server
+    }
+    handle /fonts/* {
+        file_server
+    }
+
+    handle /data/restaurants.geojson {
+        file_server
+    }
+
+    handle /route/v1/* {
+        reverse_proxy osrm:5000
+    }
+
+    handle {
+        reverse_proxy tileserver:80
+    }
+}

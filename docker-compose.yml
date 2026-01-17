@@ -1,0 +1,33 @@
+services:
+
+  tileserver:
+    image: klokantech/tileserver-gl
+    platform: linux/amd64
+    container_name: map_tileserver
+    volumes:
+      - .:/data:ro
+    command: -c config.json
+    ports:
+      - "8080:80"
+
+  osrm:
+    image: osrm/osrm-backend
+    platform: linux/amd64
+    container_name: map_osrm
+    command: osrm-routed --algorithm ch /data/data/telangana-latest.osrm
+    volumes:
+      - .:/data
+    ports:
+      - "5001:5000"
+
+  caddy:
+    image: caddy:2
+    container_name: map_caddy
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - .:/web_data
+    ports:
+      - "8088:80"
+    depends_on:
+      - tileserver
+      - osrm

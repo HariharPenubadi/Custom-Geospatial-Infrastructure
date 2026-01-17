@@ -1,0 +1,15 @@
+.DS_Store
+
+*.mbtiles
+*.pbf
+*.osm
+*.zip
+
+data/*.osrm*
+data/sources/
+
+tmp/
+
+*.jar
+
+.caddy/
